@@ -1,0 +1,8 @@
+lib: [
+  "_build/install/default/lib/DBEngine/META"
+  "_build/install/default/lib/DBEngine/dune-package"
+  "_build/install/default/lib/DBEngine/opam"
+]
+bin: [
+  "_build/install/default/bin/DBEngine"
+]
