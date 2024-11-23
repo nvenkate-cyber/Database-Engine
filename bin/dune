@@ -1,4 +1,0 @@
-(executable
- (public_name DBEngine)
- (name lexer)
- (libraries DBEngine))

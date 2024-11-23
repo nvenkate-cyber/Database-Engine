@@ -1,0 +1,4 @@
+(library
+ (name DB)
+ (modules lexer tokenTypes)
+  (libraries str))
