@@ -6,11 +6,13 @@ type token =
 | Tok_Update
 | Tok_Delete
 | Tok_Into
-| Tok_Values
-| Tok_Set
-| Tok_Where
-| Tok_From
-| Tok_Equals
-| Tok_Comma
+| Tok_ID of string
+| Tok_Set (*[(col,val)]--update*)
+| Tok_Where (*condition--select,update,delete*)
+| Tok_From (*tablename--select,delete*)
+| Tok_Equals (* prob dont need these- will be used in Tok_Set*)
+| Tok_Comma 
+| Tok_LParen
+| Tok_RParen
 | Tok_Asterik
 | Tok_SemiColon
