@@ -46,6 +46,11 @@ let tokenize input =
           let matched = Str.matched_string input in
           let length = String.length matched in
           tokenize (pos + length) (Tok_From :: acc)
+      
+      else if Str.string_match (Str.regexp "VALUES") input pos then
+        let matched = Str.matched_string input in
+        let length = String.length matched in
+        tokenize (pos + length) (Tok_Values :: acc)
 
       else if Str.string_match (Str.regexp "=") input pos then
         tokenize (pos + 1) (Tok_Equals :: acc)
@@ -65,7 +70,7 @@ let tokenize input =
       else if Str.string_match (Str.regexp ";") input pos then
         tokenize (pos + 1) (Tok_SemiColon :: acc)
 
-      else if Str.string_match (Str.regexp "[a-zA-Z]*") input pos then
+      else if Str.string_match (Str.regexp "[a-zA-Z0-9]*") input pos then
         let matched = Str.matched_string input in
         let length = String.length matched in
         tokenize (pos + length) (Tok_ID(matched) :: acc)

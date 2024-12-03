@@ -14,5 +14,6 @@ type token =
 | Tok_Comma 
 | Tok_LParen
 | Tok_RParen
+| Tok_Values
 | Tok_Asterik
 | Tok_SemiColon
