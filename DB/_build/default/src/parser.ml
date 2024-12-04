@@ -62,7 +62,8 @@ and parse_select_expr toks =
       (let toks = (match_token toks (Tok_ID(t))) in
       match lookahead toks with
       | None -> (toks, Select(expr_cols, From(t), NoOp))
-      | _ -> (raise(InvalidInputException("implement_condition"))))
+      | _ -> let (toks,where_expr) = parse_where_expr toks in
+      (toks, Select(expr_cols, From(t), where_expr)))
     | _ -> (raise(InvalidInputException("no_table"))))
 
 
@@ -77,3 +78,25 @@ and parse_cols_expr toks =
       | _ -> (raise(InvalidInputException("no_column"))))
     | _ -> (toks, Columns([c])))
   | _ -> (raise(InvalidInputException("no_column")))
+
+and parse_where_expr toks =
+  match (lookahead toks) with
+  | Some(Tok_Where) -> (
+    let toks = match_token toks Tok_Where in
+    match lookahead toks with
+    | Some(Tok_ID(id)) -> (let toks = match_token toks (Tok_ID(id)) in
+      let toks = match_token toks Tok_Equals in
+      let (toks, val_expr) = parse_val_expr toks in
+      (toks, Where(id, val_expr)))
+
+    | _ -> (raise(InvalidInputException("no_id")))
+  )
+
+  | _ -> (raise(InvalidInputException("no_where")))
+
+and parse_val_expr toks =
+  match lookahead toks with
+  | Some(Tok_Int(i)) -> let toks = match_token toks (Tok_Int(i)) in (toks, Int(i))
+  | Some(Tok_ID(id)) -> let toks = match_token toks (Tok_ID(id)) in (toks, String(id))
+  | Some(Tok_Bool(b)) -> let toks = match_token toks (Tok_Bool(b)) in (toks, Bool(b))
+  | _ -> (raise(InvalidInputException("no_val")))

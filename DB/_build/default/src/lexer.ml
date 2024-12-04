@@ -70,6 +70,16 @@ let tokenize input =
       else if Str.string_match (Str.regexp ";") input pos then
         tokenize (pos + 1) (Tok_SemiColon :: acc)
 
+      else if Str.string_match (Str.regexp "true\\|false") input pos then
+        let matched = Str.matched_string input in
+        let length = String.length matched in
+        tokenize (pos + length) (Tok_Bool(bool_of_string matched) :: acc)
+
+      else if Str.string_match (Str.regexp "[0-9]+") input pos then
+        let matched = Str.matched_string input in
+        let length = String.length matched in
+        tokenize (pos + length) (Tok_Int(int_of_string matched) :: acc)
+
       else if Str.string_match (Str.regexp "[a-zA-Z0-9]*") input pos then
         let matched = Str.matched_string input in
         let length = String.length matched in

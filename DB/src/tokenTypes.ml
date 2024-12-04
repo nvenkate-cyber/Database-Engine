@@ -7,6 +7,8 @@ type token =
 | Tok_Delete
 | Tok_Into
 | Tok_ID of string
+| Tok_Int of int
+| Tok_Bool of bool
 | Tok_Set (*[(col,val)]--update*)
 | Tok_Where (*condition--select,update,delete*)
 | Tok_From (*tablename--select,delete*)

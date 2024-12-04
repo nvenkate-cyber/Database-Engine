@@ -8,6 +8,8 @@ let string_of_token (t : token) : string = match t with
   | Tok_Delete -> "Tok_Delete"
   | Tok_Into -> "Tok_Into"
   | Tok_ID(id) -> "Tok_ID(\"" ^ id ^ "\")"
+  | Tok_Bool(b) -> "Tok_Bool(\"" ^ (string_of_bool b) ^ "\")"
+  | Tok_Int(i) -> "Tok_Int(\"" ^ (string_of_int i) ^ "\")"
   | Tok_Set -> "Tok_Set"
   | Tok_Where -> "Tok_Where"
   | Tok_From -> "Tok_From"
