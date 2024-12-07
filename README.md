@@ -47,6 +47,17 @@ Convert string that includes sql statement to list of tokens. This will later be
 - `*`
 - `;`
 
+## Step 2: Interpret
+
+### B+ Trees
+
+Very commonly used for data storing in databases. Will not use currently, but will look into implementing this in the near future, since this involves dealing with disk space.
+
+### Sorted Files
+
+Will use a sorted file, using page dictionaries to store data and query select through them.
+
+
 ## Resources
 
 **SQLite Documentation/Open Source**
@@ -60,3 +71,9 @@ https://www.w3schools.com/sql/default.asp
 
 **Building Dune**
 https://dune.readthedocs.io/en/stable/quick-start.html
+
+**B+ Trees**
+https://www.youtube.com/watch?v=scUtG_6M_lU&list=PLSE8ODhjZXjYDBpQnSymaectKjxCy6BYq&index=9
+
+**Database Systems**
+https://cs186berkeley.net/notes/note3/
