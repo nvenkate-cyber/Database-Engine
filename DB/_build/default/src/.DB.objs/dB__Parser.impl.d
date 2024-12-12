@@ -1,1 +1,1 @@
-src/parser.ml: List MicroCamlTypes Printf TokenTypes Utils
+src/parser.ml: List Printf SQLTypes TokenTypes Utils

@@ -1,0 +1,4 @@
+[customerID, name, address, balance]
+[1, Test1, address test, 100]
+[2, Test2, address test, 200]
+[3, Test3, address test, 300]

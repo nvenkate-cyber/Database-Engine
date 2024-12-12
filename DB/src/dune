@@ -1,4 +1,4 @@
 (library
  (name DB)
- (modules lexer tokenTypes parser microCamlTypes utils)
+ (modules lexer tokenTypes parser SQLTypes utils eval)
   (libraries str))
